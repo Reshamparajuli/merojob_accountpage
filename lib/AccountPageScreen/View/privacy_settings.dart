@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:merojob_accountpage/Account_Screen_Constants/constants.dart';
 import 'package:remixicon/remixicon.dart';
+
+import '../../Account_Screen_Appbar/appbar.dart';
 
 class PrivacySettingScreen extends StatelessWidget {
   PrivacySettingScreen({super.key});
@@ -9,26 +12,15 @@ class PrivacySettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 1,
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Remix.arrow_left_s_line)),
-        title: const Text(
-          'Account Settings',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
-        ),
-      ),
+      appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(60), child: Appbar()),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Privacy Settings',
+              AccountConstants.privacySetting,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
             ),
             const SizedBox(
@@ -60,46 +52,33 @@ class PrivacySettingScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      Checkbox(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50)),
-                          value: _value,
-                          onChanged: (value) {
-                            _value = !_value;
-                          }),
-                      const Text("Any Employer",
-                          style: TextStyle(
-                              color: Color(0xFF636469),
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Checkbox(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50)),
-                          value: _value,
-                          onChanged: (value) {
-                            _value = !_value;
-                          }),
-                      const Expanded(
-                        child: Text("Only Employers when applied for their job",
-                            style: TextStyle(
-                                color: Color(0xFF636469),
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600)),
-                      ),
-                    ],
-                  ),
+                  PrivacyRow("Everyone"),
+                  PrivacyRow("Only "),
                 ],
               ),
             )
           ],
         ),
       ),
+    );
+  }
+
+  Widget PrivacyRow(String text) {
+    return Row(
+      children: [
+        Checkbox(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+            value: _value,
+            onChanged: (value) {
+              _value = !_value;
+            }),
+        Text(text,
+            style: const TextStyle(
+                color: Color(0xFF636469),
+                fontSize: 15,
+                fontWeight: FontWeight.w600)),
+      ],
     );
   }
 }

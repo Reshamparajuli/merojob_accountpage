@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:merojob_accountpage/Account_Screen_Appbar/appbar.dart';
 import 'package:remixicon/remixicon.dart';
+
+import '../../Account_Screen_Constants/constants.dart';
 
 class ChangeEmail extends StatelessWidget {
   ChangeEmail({super.key});
@@ -9,29 +12,19 @@ class ChangeEmail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 1,
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Remix.arrow_left_s_line)),
-        title: const Text(
-          'Account Settings',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
-        ),
-      ),
+      appBar: const PreferredSize(preferredSize: Size.fromHeight(60),
+        
+        child: Appbar()),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+        padding: const  EdgeInsets.symmetric(horizontal: 24, vertical: 32),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Change Email',
+                const  Text(
+                 AccountConstants.changeEmail,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                 ),
                 Container(
