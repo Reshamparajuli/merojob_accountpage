@@ -52,8 +52,9 @@ class PrivacySettingScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  PrivacyRow("Everyone"),
-                  PrivacyRow("Only "),
+                  privacyRow(AccountConstants.everyone),
+                  privacyRow(
+                      AccountConstants.onlyEmployerWhenAppliedForTheirJob),
                 ],
               ),
             )
@@ -63,7 +64,7 @@ class PrivacySettingScreen extends StatelessWidget {
     );
   }
 
-  Widget PrivacyRow(String text) {
+  Widget privacyRow(String text) {
     return Row(
       children: [
         Checkbox(

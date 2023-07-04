@@ -34,7 +34,7 @@ class DeactivateAccountScreen extends StatelessWidget {
             const SizedBox(
               height: 32,
             ),
-            TextFormFields("Password", Remix.lock_2_line, Remix.eye_close_line,
+            textFormFields("Password", Remix.lock_2_line, Remix.eye_close_line,
                 Colors.grey.shade600),
           ],
         ),
@@ -42,7 +42,7 @@ class DeactivateAccountScreen extends StatelessWidget {
     );
   }
 
-  Widget TextFormFields(String hintText, IconData prefixIcon,
+  Widget textFormFields(String hintText, IconData prefixIcon,
       IconData suffixIcon, Color iconcolor) {
     return TextFormField(
       decoration: InputDecoration(
